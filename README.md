@@ -1,6 +1,8 @@
 # pi-power-button
 
-Scripts used in our official [Raspberry Pi power button guide](https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi).
+Scripts used in hochoo's article [Raspberry Pi power button guide](https://howchoo.com/g/mwnlytk3zmm/how-to-add-a-power-button-to-your-raspberry-pi).
+
+> **Note**: This version has been updated by Tiran Dagan (tiran@tirandagan.com) to support both Normally Open (NO) and Normally Closed (NC) buttons, with improved debounce handling and user notifications.
 
 ## Installation
 
