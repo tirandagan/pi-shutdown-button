@@ -42,9 +42,10 @@ shutdown_triggered = False
 def shutdown_system():
     """Function to broadcast message and shutdown the system"""
     print("Button press detected. Initiating shutdown...")
-    subprocess.run(["sudo wall", "Shutdown initiated by button press."])
-    time.sleep(3)  # 1 second delay before shutdown
-    subprocess.call(["sudo sync & sudo halt"])
+    subprocess.run(["sudo", "wall", "Shutdown initiated by button press."])
+    #time.sleep(3)  # 1 second delay before shutdown
+    subprocess.run(["sudo", "sync"])
+    subprocess.run(["sudo", "halt"])
 
 def button_callback(channel):
     """Callback function that will be executed when button is pressed"""
