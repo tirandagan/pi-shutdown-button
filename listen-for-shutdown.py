@@ -44,8 +44,11 @@ def shutdown_system():
     print("Button press detected. Initiating shutdown...")
     subprocess.run(["sudo", "wall", "Shutdown initiated by button press."])
     #time.sleep(3)  # 1 second delay before shutdown
-    subprocess.run(["sudo", "sync"])
-    subprocess.run(["sudo", "halt"])
+    sync_result = subprocess.run(["sudo", "sync"], capture_output=True,shell=False)
+    if sync_result.returncode == 0:
+        subprocess.run(["sudo", "halt"],shell=False)
+    else:
+        subprocess.run(["sudo", "wall", "Sync failed, aborting shutdown."],shell=False)
 
 def button_callback(channel):
     """Callback function that will be executed when button is pressed"""
@@ -123,7 +126,7 @@ def main():
             
             # Keep the script running
             while True:
-                time.sleep(1)
+                time.sleep(0.5)
                 
         except RuntimeError as e:
             print(f"Edge detection failed: {e}")
